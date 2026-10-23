@@ -22,11 +22,11 @@ export async function POST(request) {
       );
     }
 
-    const databaseUrl = process.env.NEON_DATABASE_URL;
+    const databaseUrl = process.env.NEON_DATABASE_URL || process.env.DATABASE_URL;
     if (!databaseUrl) {
-      console.error('[NeonDB API] NEON_DATABASE_URL is not defined in .env');
+      console.error('[NeonDB API] NEON_DATABASE_URL or DATABASE_URL is not defined in environment variables');
       return NextResponse.json(
-        { success: false, error: 'Database connection string not configured' },
+        { success: false, error: 'Database connection string not configured. Please set NEON_DATABASE_URL or DATABASE_URL in Netlify Environment Variables.' },
         { status: 500 }
       );
     }
