@@ -13,25 +13,34 @@ export default function PeekingCharacter({ side = 'right', questionIndex = 0, is
       key={`${questionIndex}-${side}`}
       className={`absolute z-0 pointer-events-none select-none hidden md:block ${
         isRight
-          ? '-right-14 lg:-right-16 top-1/4'
-          : '-left-14 lg:-left-16 top-1/3'
-      }`}
-      // Wait for central question card to open, then peek out smoothly!
+          ? '-right-10 sm:-right-12 md:-right-13 lg:-right-14 top-1/4'
+          : '-left-10 sm:-left-12 md:-left-13 lg:-left-14 top-1/3'
+      } scale-75 sm:scale-85 md:scale-95 lg:scale-100 transition-transform origin-center`}
+      // Smooth organic peek: rotates slightly as it peeps around the card edge
       initial={{
-        x: isRight ? -35 : 35,
+        x: isRight ? -25 : 25,
         opacity: 0,
-        scale: 0.9,
+        rotate: isRight ? -8 : 8,
+        scale: 0.8,
       }}
       animate={{
         x: 0,
         opacity: 1,
-        scale: 1,
-        y: [0, -4, 0],
+        rotate: 0,
+        scale: isAnswering ? 1.05 : 1,
+        y: isAnswering ? [-2, -8, -2] : [0, -5, 0],
       }}
       transition={{
-        x: { delay: 0.28, duration: 0.45, ease: 'easeOut' },
-        opacity: { delay: 0.28, duration: 0.3 },
-        y: { delay: 0.7, duration: 2.6, repeat: Infinity, ease: 'easeInOut' },
+        x: { delay: 0.2, duration: 0.45, ease: 'easeOut' },
+        rotate: { delay: 0.2, duration: 0.45, ease: 'easeOut' },
+        opacity: { delay: 0.15, duration: 0.3 },
+        scale: { duration: 0.3, ease: 'backOut' },
+        y: {
+          delay: 0.6,
+          duration: isAnswering ? 0.4 : 2.8,
+          repeat: isAnswering ? 1 : Infinity,
+          ease: 'easeInOut',
+        },
       }}
     >
       <div className="relative">

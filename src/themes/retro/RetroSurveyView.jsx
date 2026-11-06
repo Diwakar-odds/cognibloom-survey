@@ -184,8 +184,8 @@ export default function RetroSurveyView() {
       </header>
 
       {/* Main Content Area - Expansive on Welcome, Ultra-Wide & Balanced on Questions */}
-      <main className="relative z-10 flex-1 flex items-center justify-center px-4 py-4 sm:py-8">
-        <div className={`w-full relative transition-all duration-300 ${!hasStarted ? 'max-w-4xl' : isWaitlistStage ? 'max-w-xl' : 'max-w-5xl lg:max-w-6xl'}`}>
+      <main className="relative z-10 flex-1 flex items-center justify-center px-4 sm:px-12 md:px-16 lg:px-20 py-4 sm:py-8">
+        <div className={`w-full relative transition-all duration-300 ${!hasStarted ? 'max-w-4xl' : isWaitlistStage ? 'max-w-xl' : 'max-w-5xl xl:max-w-[1120px]'}`}>
           {/* Peeking Mascot behind the active question card from Left or Right */}
           {hasStarted && !isWaitlistStage && (
             <PeekingCharacter
@@ -441,13 +441,13 @@ export default function RetroSurveyView() {
                                   key={opt.label}
                                   type="button"
                                   onClick={() => handleMultiSelect(q.id, opt.label)}
-                                  className={`p-2 px-2.5 rounded-lg border-2 text-left font-sans text-xs transition-all flex items-center justify-between gap-1.5 cursor-pointer ${
+                                  className={`min-h-[42px] sm:min-h-[44px] p-2 px-2.5 rounded-lg border-2 text-left font-sans transition-all flex items-center justify-between gap-2 cursor-pointer ${
                                     isSelected
                                       ? 'bg-[#95d9c0] border-black text-black font-bold shadow-[2px_2px_0px_#000]'
                                       : 'bg-white border-zinc-300 text-zinc-800 hover:border-black hover:bg-zinc-50'
                                   }`}
                                 >
-                                  <span className="flex items-center gap-1.5 min-w-0">
+                                  <span className="flex items-center gap-2 min-w-0 flex-1">
                                     {(opt.icon || opt.emoji) && (
                                       <span
                                         className={`h-5 w-5 rounded border flex items-center justify-center shrink-0 transition-all ${
@@ -463,10 +463,12 @@ export default function RetroSurveyView() {
                                         />
                                       </span>
                                     )}
-                                    <span className="leading-tight truncate text-xs">{opt.label}</span>
+                                    <span className="leading-tight text-[11px] sm:text-xs text-black font-medium break-words">
+                                      {opt.label}
+                                    </span>
                                   </span>
                                   <span
-                                    className={`h-3.5 w-3.5 border border-black rounded-xs flex items-center justify-center shrink-0 ${
+                                    className={`h-3.5 w-3.5 border border-black rounded-xs flex items-center justify-center shrink-0 ml-1 ${
                                       isSelected ? 'bg-black text-[#95d9c0]' : 'bg-white'
                                     }`}
                                   >
@@ -501,13 +503,13 @@ export default function RetroSurveyView() {
                                   <button
                                     type="button"
                                     onClick={() => handleSingleSelect(q.id, opt.label)}
-                                    className={`w-full p-2 px-2.5 rounded-lg border-2 text-left font-sans text-xs transition-all flex items-center justify-between gap-1.5 cursor-pointer ${
+                                    className={`w-full min-h-[42px] sm:min-h-[44px] p-2 px-2.5 rounded-lg border-2 text-left font-sans transition-all flex items-center justify-between gap-2 cursor-pointer ${
                                       isSelected
                                         ? 'bg-[#95d9c0] border-black text-black font-bold shadow-[2px_2px_0px_#000]'
                                         : 'bg-white border-zinc-300 text-zinc-800 hover:border-black hover:bg-zinc-50'
                                     }`}
                                   >
-                                    <span className="flex items-center gap-1.5 min-w-0">
+                                    <span className="flex items-center gap-2 min-w-0 flex-1">
                                       {(opt.icon || opt.emoji) && (
                                         <span
                                           className={`h-5 w-5 rounded border flex items-center justify-center shrink-0 transition-all ${
@@ -523,10 +525,12 @@ export default function RetroSurveyView() {
                                           />
                                         </span>
                                       )}
-                                      <span className="leading-snug truncate text-xs">{opt.label}</span>
+                                      <span className="leading-tight text-[11px] sm:text-xs text-black font-medium break-words">
+                                        {opt.label}
+                                      </span>
                                     </span>
                                     <span
-                                      className={`h-3.5 w-3.5 rounded-full border border-black flex items-center justify-center shrink-0 ${
+                                      className={`h-3.5 w-3.5 rounded-full border border-black flex items-center justify-center shrink-0 ml-1 ${
                                         isSelected ? 'bg-black text-[#95d9c0]' : 'bg-white'
                                       }`}
                                     >
