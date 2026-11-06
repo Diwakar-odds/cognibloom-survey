@@ -1,8 +1,5 @@
 # Environment files
-.env
 .env*.local
-.env.production
-.env.development
 
 # Logs
 logs
@@ -19,7 +16,6 @@ dist-ssr
 *.local
 
 # Editor directories and files
-.vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
@@ -32,3 +28,4 @@ dist-ssr
 # Next.js
 .next/
 out/
+config.bat
